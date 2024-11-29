@@ -40,43 +40,39 @@
 
     /* TradingView Widget Styling */
     .tradingview-widget-container {
+      position: relative;
       width: 100%;
-      height: 600px; /* Default height for desktop */
-      max-width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
       overflow: hidden;
     }
 
-    /* Adjust size for larger screens */
-    @media (min-width: 1025px) {
-      .tradingview-widget-container {
-        height: 800px; /* Adjust height for large screens */
-      }
+    /* Ensuring Widget maintains proper aspect ratio */
+    .tradingview-widget-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
 
-    /* Adjust size for tablets */
+    /* Adjustments for Mobile Devices */
     @media (max-width: 1024px) {
       .tradingview-widget-container {
-        height: 650px; /* Adjust height for large tablets */
+        padding-bottom: 60%; /* 16:9 Aspect Ratio for tablet */
       }
     }
 
-    /* Adjust size for mobile devices */
     @media (max-width: 768px) {
       .tradingview-widget-container {
-        height: 500px; /* Adjust height for tablets and large mobile screens */
+        padding-bottom: 70%; /* Adjust aspect ratio for tablets */
       }
     }
 
-    /* Even smaller mobile devices */
     @media (max-width: 480px) {
       .tradingview-widget-container {
-        height: 400px; /* Adjust height for small mobile devices */
+        padding-bottom: 80%; /* Adjust aspect ratio for smaller mobile devices */
       }
-    }
-
-    /* Ensure no overflow and full widget height */
-    .tradingview-widget-container__widget {
-      height: 100% !important;
     }
   </style>
 </head>
@@ -97,52 +93,9 @@
     <!-- TradingView Widget -->
     <div class="widget">
       <!-- TradingView Widget BEGIN -->
-      <div class="tradingview-widget-container" style="height:100%;width:100%">
-        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
-        <div class="tradingview-widget-copyright">
-          <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
-            <span class="blue-text">Track all markets on TradingView</span>
-          </a>
-        </div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "autosize": true,
-          "symbol": "BITSTAMP:BTCUSD",
-          "interval": "D",
-          "timezone": "Etc/UTC",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "withdateranges": true,
-          "allow_symbol_change": true,
-          "watchlist": [
-            "BITSTAMP:BTCUSD",
-            "CRYPTO:ONDOUSD",
-            "CRYPTO:XRPUSD",
-            "CRYPTO:AVAXUSD",
-            "CRYPTO:DOGEUSD",
-            "BINANCE:HBARUSD",
-            "BINANCE:SOLUSD",
-            "CRYPTO:RENDERUSD",
-            "BINANCE:ETHUSD",
-            "CRYPTO:SANDUSD",
-            "BINANCE:WLDUSD",
-            "CRYPTO:DOTUSD",
-            "BITFINEX:ARBUSD",
-            "CRYPTO:LTCUSD",
-            "BINANCE:BNBUSD",
-            "BINANCE:TRXUSD"
-          ],
-          "details": true,
-          "hotlist": true,
-          "calendar": false,
-          "studies": [
-            "STD;Bollinger_Bands",
-            "STD;Stochastic_RSI"
-          ],
-          "support_host": "https://www.tradingview.com"
-        }
-        </script>
+      <div class="tradingview-widget-container">
+        <iframe src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js?autosize=true&symbol=BITSTAMP:BTCUSD&interval=D&timezone=Etc/UTC&theme=light&style=1&locale=en&withdateranges=true&allow_symbol_change=true&watchlist=%5B%22BITSTAMP:BTCUSD%22,%22CRYPTO:ONDOUSD%22,%22CRYPTO:XRPUSD%22,%22CRYPTO:AVAXUSD%22,%22CRYPTO:DOGEUSD%22,%22BINANCE:HBARUSD%22,%22BINANCE:SOLUSD%22,%22CRYPTO:RENDERUSD%22,%22BINANCE:ETHUSD%22,%22CRYPTO:SANDUSD%22,%22BINANCE:WLDUSD%22,%22CRYPTO:DOTUSD%22,%22BITFINEX:ARBUSD%22,%22CRYPTO:LTCUSD%22,%22BINANCE:BNBUSD%22,%22BINANCE:TRXUSD%22%5D&details=true&hotlist=true&calendar=false&studies=%5B%22STD;Bollinger_Bands%22,%22STD;Stochastic_RSI%22%5D&support_host=https%3A%2F%2Fwww.tradingview.com"
+                frameborder="0"></iframe>
       </div>
       <!-- TradingView Widget END -->
     </div>
