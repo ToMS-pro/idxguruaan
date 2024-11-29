@@ -41,33 +41,27 @@
     /* TradingView Widget Styling */
     .tradingview-widget-container {
       width: 100%;
-      height: 60vh; /* Default height for desktop */
+      height: 800px; /* Default height for desktop */
       max-width: 100%;
       overflow: hidden;
     }
 
     @media (max-width: 1024px) {
       .tradingview-widget-container {
-        height: 50vh; /* Medium height for large tablets */
+        height: 650px; /* Medium height for large tablets */
       }
     }
 
     @media (max-width: 768px) {
       .tradingview-widget-container {
-        height: 45vh; /* Smaller height for tablets */
+        height: 500px; /* Smaller height for tablets */
       }
     }
 
     @media (max-width: 480px) {
       .tradingview-widget-container {
-        height: 40vh; /* Smaller height for mobile devices */
+        height: 400px; /* Smaller height for mobile devices */
       }
-    }
-
-    /* CoinMarketCap Marquee widget */
-    #coinmarketcap-widget-marquee {
-      width: 100%;
-      height: 80px; /* Adjusted height for mobile responsiveness */
     }
   </style>
 </head>
@@ -88,8 +82,8 @@
     <!-- TradingView Widget -->
     <div class="widget">
       <!-- TradingView Widget BEGIN -->
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+      <div class="tradingview-widget-container" style="height:100%;width:100%">
+        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
         <div class="tradingview-widget-copyright">
           <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
             <span class="blue-text">Track all markets on TradingView</span>
@@ -98,7 +92,7 @@
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
         {
           "width": "100%",
-          "height": "100%",
+          "height": "500",
           "symbol": "BITSTAMP:BTCUSD",
           "interval": "D",
           "timezone": "Etc/UTC",
@@ -141,7 +135,7 @@
 
     <!-- Crypto Bubbles -->
     <div class="widget">
-      <iframe src="https://cryptobubbles.net" loading="lazy" height="400px"></iframe>
+      <iframe src="https://cryptobubbles.net" loading="lazy" height="500px"></iframe>
     </div>
   </div>
 </body>
