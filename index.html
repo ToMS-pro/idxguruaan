@@ -40,38 +40,25 @@
 
     /* TradingView Widget Styling */
     .tradingview-widget-container {
-      position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-      height: 0;
-      overflow: hidden;
+      min-height: 400px; /* Minimum height */
     }
 
-    /* Ensuring Widget maintains proper aspect ratio */
     .tradingview-widget-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
     }
 
-    /* Adjustments for Mobile Devices */
-    @media (max-width: 1024px) {
-      .tradingview-widget-container {
-        padding-bottom: 60%; /* 16:9 Aspect Ratio for tablet */
-      }
-    }
-
+    /* Mobile Responsiveness */
     @media (max-width: 768px) {
       .tradingview-widget-container {
-        padding-bottom: 70%; /* Adjust aspect ratio for tablets */
+        min-height: 300px; /* Adjust for smaller screens */
       }
     }
 
     @media (max-width: 480px) {
       .tradingview-widget-container {
-        padding-bottom: 80%; /* Adjust aspect ratio for smaller mobile devices */
+        min-height: 250px; /* Adjust for very small screens */
       }
     }
   </style>
