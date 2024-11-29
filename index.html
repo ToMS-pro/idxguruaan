@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Dashboard</title>
   <style>
-    /* Global CSS */
+    /* Global Styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -31,11 +31,6 @@
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-    }
-
-    iframe {
-      width: 100%;
-      border: none;
     }
 
     /* TradingView Widget Styling */
@@ -66,30 +61,57 @@
 <body>
   <h1>Crypto Dashboard</h1>
   <div class="container">
-    <!-- CoinMarketCap Marquee -->
-    <div class="widget">
-      <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinMarquee.js"></script>
-      <div id="coinmarketcap-widget-marquee" 
-           coins="1,1027,5690,21159,6210,5426,4642,13502,11841,24478,5176,25347,6636,74,5994,5805,1839,2,52,2010,1958" 
-           currency="IDR" 
-           theme="light" 
-           transparent="true" 
-           show-symbol-logo="true"></div>
-    </div>
-
     <!-- TradingView Widget -->
     <div class="widget">
       <!-- TradingView Widget BEGIN -->
-      <div class="tradingview-widget-container">
-        <iframe src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js?autosize=true&symbol=BITSTAMP:BTCUSD&interval=D&timezone=Etc/UTC&theme=light&style=1&locale=en&withdateranges=true&allow_symbol_change=true&watchlist=%5B%22BITSTAMP:BTCUSD%22,%22CRYPTO:ONDOUSD%22,%22CRYPTO:XRPUSD%22,%22CRYPTO:AVAXUSD%22,%22CRYPTO:DOGEUSD%22,%22BINANCE:HBARUSD%22,%22BINANCE:SOLUSD%22,%22CRYPTO:RENDERUSD%22,%22BINANCE:ETHUSD%22,%22CRYPTO:SANDUSD%22,%22BINANCE:WLDUSD%22,%22CRYPTO:DOTUSD%22,%22BITFINEX:ARBUSD%22,%22CRYPTO:LTCUSD%22,%22BINANCE:BNBUSD%22,%22BINANCE:TRXUSD%22%5D&details=true&hotlist=true&calendar=false&studies=%5B%22STD;Bollinger_Bands%22,%22STD;Stochastic_RSI%22%5D&support_host=https%3A%2F%2Fwww.tradingview.com"
-                frameborder="0"></iframe>
+      <div class="tradingview-widget-container" style="height:100%;width:100%">
+        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+        <div class="tradingview-widget-copyright">
+          <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+            <span class="blue-text">Track all markets on TradingView</span>
+          </a>
+        </div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+        {
+          "autosize": true,
+          "symbol": "BITSTAMP:BTCUSD",
+          "interval": "D",
+          "timezone": "Etc/UTC",
+          "theme": "light",
+          "style": "1",
+          "locale": "en",
+          "withdateranges": true,
+          "allow_symbol_change": true,
+          "watchlist": [
+            "BITSTAMP:BTCUSD",
+            "CRYPTO:ONDOUSD",
+            "CRYPTO:XRPUSD",
+            "CRYPTO:AVAXUSD",
+            "CRYPTO:DOGEUSD",
+            "BINANCE:HBARUSD",
+            "BINANCE:SOLUSD",
+            "CRYPTO:RENDERUSD",
+            "BINANCE:ETHUSD",
+            "CRYPTO:SANDUSD",
+            "BINANCE:WLDUSD",
+            "CRYPTO:DOTUSD",
+            "BITFINEX:ARBUSD",
+            "CRYPTO:LTCUSD",
+            "BINANCE:BNBUSD",
+            "BINANCE:TRXUSD"
+          ],
+          "details": true,
+          "hotlist": true,
+          "calendar": false,
+          "studies": [
+            "STD;Bollinger_Bands",
+            "STD;Stochastic_RSI"
+          ],
+          "support_host": "https://www.tradingview.com"
+        }
+        </script>
       </div>
       <!-- TradingView Widget END -->
-    </div>
-
-    <!-- Crypto Bubbles -->
-    <div class="widget">
-      <iframe src="https://cryptobubbles.net" loading="lazy" height="500px"></iframe>
     </div>
   </div>
 </body>
