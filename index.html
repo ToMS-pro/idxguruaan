@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Dashboard</title>
   <style>
-    /* Global Styles */
+    /* Global CSS */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -33,39 +33,63 @@
       overflow: hidden;
     }
 
+    iframe {
+      width: 100%;
+      border: none;
+    }
+
     /* TradingView Widget Styling */
     .tradingview-widget-container {
       width: 100%;
-      min-height: 400px; /* Minimum height */
+      height: 60vh; /* Default height for desktop */
+      max-width: 100%;
+      overflow: hidden;
     }
 
-    .tradingview-widget-container iframe {
-      width: 100%;
-      height: 100%;
+    @media (max-width: 1024px) {
+      .tradingview-widget-container {
+        height: 50vh; /* Medium height for large tablets */
+      }
     }
 
-    /* Mobile Responsiveness */
     @media (max-width: 768px) {
       .tradingview-widget-container {
-        min-height: 300px; /* Adjust for smaller screens */
+        height: 45vh; /* Smaller height for tablets */
       }
     }
 
     @media (max-width: 480px) {
       .tradingview-widget-container {
-        min-height: 250px; /* Adjust for very small screens */
+        height: 40vh; /* Smaller height for mobile devices */
       }
+    }
+
+    /* CoinMarketCap Marquee widget */
+    #coinmarketcap-widget-marquee {
+      width: 100%;
+      height: 80px; /* Adjusted height for mobile responsiveness */
     }
   </style>
 </head>
 <body>
   <h1>Crypto Dashboard</h1>
   <div class="container">
+    <!-- CoinMarketCap Marquee -->
+    <div class="widget">
+      <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinMarquee.js"></script>
+      <div id="coinmarketcap-widget-marquee" 
+           coins="1,1027,5690,21159,6210,5426,4642,13502,11841,24478,5176,25347,6636,74,5994,5805,1839,2,52,2010,1958" 
+           currency="IDR" 
+           theme="light" 
+           transparent="true" 
+           show-symbol-logo="true"></div>
+    </div>
+
     <!-- TradingView Widget -->
     <div class="widget">
       <!-- TradingView Widget BEGIN -->
-      <div class="tradingview-widget-container" style="height:100%;width:100%">
-        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
         <div class="tradingview-widget-copyright">
           <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
             <span class="blue-text">Track all markets on TradingView</span>
@@ -73,7 +97,8 @@
         </div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
         {
-          "autosize": true,
+          "width": "100%",
+          "height": "100%",
           "symbol": "BITSTAMP:BTCUSD",
           "interval": "D",
           "timezone": "Etc/UTC",
@@ -112,6 +137,11 @@
         </script>
       </div>
       <!-- TradingView Widget END -->
+    </div>
+
+    <!-- Crypto Bubbles -->
+    <div class="widget">
+      <iframe src="https://cryptobubbles.net" loading="lazy" height="400px"></iframe>
     </div>
   </div>
 </body>
