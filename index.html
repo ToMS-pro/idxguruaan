@@ -5,31 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Crypto Dashboard</title>
   <style>
+    /* Dark Mode Global CSS */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #0d1117; /* dark mode */
-      color: #eaeaea;
+      background-color: #121212;
+      color: #f0f0f0;
     }
 
-    h1, h2 {
+    h1 {
       text-align: center;
+      color: #ffffff;
       margin: 20px 0;
-      color: #00ffcc;
+      font-size: 1.8em;
     }
 
     .container {
       max-width: 1200px;
       margin: auto;
-      padding: 10px;
+      padding: 15px;
     }
 
     .widget {
       margin-bottom: 20px;
-      background: #161b22;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      background: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       overflow: hidden;
       padding: 10px;
     }
@@ -39,18 +41,43 @@
       border: none;
     }
 
+    /* TradingView Widget Styling */
     .tradingview-widget-container {
       width: 100%;
       height: 800px;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .tradingview-widget-container {
+        height: 650px;
+      }
     }
 
     @media (max-width: 768px) {
       .tradingview-widget-container {
         height: 500px;
       }
+    }
 
-      iframe {
+    @media (max-width: 480px) {
+      .tradingview-widget-container {
         height: 400px;
+      }
+
+      h1 {
+        font-size: 1.4em;
+        margin: 15px 10px;
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      .widget {
+        padding: 8px;
       }
     }
   </style>
@@ -59,9 +86,8 @@
   <h1>Crypto Dashboard</h1>
   <div class="container">
 
-    <!-- BTC Price Widget -->
+    <!-- CoinMarketCap Currency Widget -->
     <div class="widget">
-      <h2>Harga Bitcoin (BTC)</h2>
       <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
       <div class="coinmarketcap-currency-widget"
            data-currencyid="1"
@@ -72,26 +98,29 @@
            data-marketcap="true"
            data-volume="true"
            data-statsticker="true"
-           data-stats="USD">
-      </div>
+           data-stats="USD"></div>
     </div>
 
-    <!-- CoinMarketCap Marquee -->
+    <!-- CoinMarketCap Marquee (Dark Theme) -->
     <div class="widget">
       <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinMarquee.js"></script>
       <div id="coinmarketcap-widget-marquee"
-        coins="1,1027,1321,11841,6535,6210,5690,22861,21159"
-        currency="IDR"
-        theme="dark"
-        transparent="false"
-        show-symbol-logo="true">
-      </div>
+           coins="1,1027,1321,11841,6535,6210,5690,22861,21159"
+           currency="IDR"
+           theme="dark"
+           transparent="false"
+           show-symbol-logo="true"></div>
     </div>
 
-    <!-- TradingView Advanced Chart -->
+    <!-- TradingView Widget -->
     <div class="widget">
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-container" style="height:100%;width:100%">
+        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+        <div class="tradingview-widget-copyright">
+          <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+            <span class="blue-text">Track all markets on TradingView</span>
+          </a>
+        </div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
         {
           "width": "100%",
@@ -105,12 +134,36 @@
           "withdateranges": true,
           "allow_symbol_change": true,
           "watchlist": [
-            "BITSTAMP:BTCUSD", "BINANCE:ETHUSD", "CRYPTO:XRPUSD", "BINANCE:SOLUSD", "CRYPTO:DOGEUSD"
+            "BITSTAMP:BTCUSD",
+            "BINANCE:ETCUSD",
+            "BITFINEX:ARBUSD",
+            "CRYPTO:RENDERUSD",
+            "CRYPTO:ONDOUSD",
+            "CRYPTO:XRPUSD",
+            "BINANCE:TIAUSD",
+            "CRYPTO:AVAXUSD",
+            "CRYPTO:DOGEUSD",
+            "BINANCE:HBARUSD",
+            "BINANCE:SOLUSD",
+            "BINANCE:ETHUSD",
+            "CRYPTO:SANDUSD",
+            "BINANCE:WLDUSD",
+            "CRYPTO:DOTUSD",
+            "BITFINEX:ARBUSD",
+            "CRYPTO:LTCUSD",
+            "BINANCE:BNBUSD",
+            "BINANCE:TRXUSD"
           ],
           "details": true,
           "hotlist": true,
           "calendar": false,
-          "studies": ["STD;MACD", "STD;RSI", "STD;Bollinger_Bands"]
+          "studies": [
+            "STD;Bollinger_Bands",
+            "STD;Williams_Alligator",
+            "STD;MACD",
+            "STD;Stochastic_RSI"
+          ],
+          "support_host": "https://www.tradingview.com"
         }
         </script>
       </div>
@@ -118,16 +171,7 @@
 
     <!-- Crypto Bubbles -->
     <div class="widget">
-      <iframe src="https://cryptobubbles.net" height="500px" loading="lazy"></iframe>
-    </div>
-
-    <!-- Altseason Index -->
-    <div class="widget">
-      <h2>Alt‑Season Index</h2>
-      <iframe src="https://coinmarketcap.com/charts/altcoin-season-index/"
-              style="width: 100%; height: 600px; border: none; border-radius: 10px;" 
-              loading="lazy">
-      </iframe>
+      <iframe src="https://cryptobubbles.net" loading="lazy" height="500px"></iframe>
     </div>
 
   </div>
