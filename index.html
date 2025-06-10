@@ -9,7 +9,7 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
+      padding: 60px 0 0; /* top padding to offset fixed marquee */
       background-color: #0d1117;
       color: #f0f0f0;
     }
@@ -50,6 +50,18 @@
     .tradingview-widget-container {
       width: 100%;
       height: 800px;
+    }
+
+    /* Sticky marquee on top */
+    #sticky-marquee {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      background: #0d1117;
+      padding: 8px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
 
     /* Responsive */
@@ -94,6 +106,18 @@
   </style>
 </head>
 <body>
+
+  <!-- CoinMarketCap Marquee Sticky -->
+  <div id="sticky-marquee" class="widget">
+    <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinMarquee.js"></script>
+    <div id="coinmarketcap-widget-marquee"
+         coins="1,1027,1321,11841,6535,6210,5690,22861,21159"
+         currency="IDR"
+         theme="dark"
+         transparent="false"
+         show-symbol-logo="true"></div>
+  </div>
+
   <h1>Crypto Dashboard</h1>
   <div class="container">
 
@@ -110,17 +134,6 @@
            data-volume="true"
            data-statsticker="true"
            data-stats="USD"></div>
-    </div>
-
-    <!-- CoinMarketCap Marquee (Dark Theme) -->
-    <div class="widget">
-      <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinMarquee.js"></script>
-      <div id="coinmarketcap-widget-marquee"
-           coins="1,1027,1321,11841,6535,6210,5690,22861,21159"
-           currency="IDR"
-           theme="dark"
-           transparent="false"
-           show-symbol-logo="true"></div>
     </div>
 
     <!-- TradingView Widget -->
@@ -160,7 +173,6 @@
             "CRYPTO:SANDUSD",
             "BINANCE:WLDUSD",
             "CRYPTO:DOTUSD",
-            "BITFINEX:ARBUSD",
             "CRYPTO:LTCUSD",
             "BINANCE:BNBUSD",
             "BINANCE:TRXUSD"
