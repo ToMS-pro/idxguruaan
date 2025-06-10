@@ -5,35 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Crypto Dashboard</title>
   <style>
-    /* Dark Mode Global CSS */
+    /* Dark Modern Global Styles */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #121212;
+      background-color: #0d1117;
       color: #f0f0f0;
     }
 
     h1 {
       text-align: center;
-      color: #ffffff;
+      color: #00ffcc;
       margin: 20px 0;
-      font-size: 1.8em;
+      font-size: 2em;
+      letter-spacing: 1px;
     }
 
     .container {
       max-width: 1200px;
       margin: auto;
-      padding: 15px;
+      padding: 20px;
     }
 
     .widget {
       margin-bottom: 20px;
-      background: #1e1e1e;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      overflow: hidden;
-      padding: 10px;
+      background: #161b22;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+      padding: 15px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .widget:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 18px rgba(0, 255, 204, 0.2);
     }
 
     iframe {
@@ -41,15 +47,12 @@
       border: none;
     }
 
-    /* TradingView Widget Styling */
     .tradingview-widget-container {
       width: 100%;
       height: 800px;
-      max-width: 100%;
-      overflow: hidden;
     }
 
-    /* Responsive Design */
+    /* Responsive */
     @media (max-width: 1024px) {
       .tradingview-widget-container {
         height: 650px;
@@ -57,27 +60,35 @@
     }
 
     @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5em;
+      }
+
       .tradingview-widget-container {
         height: 500px;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      .widget {
+        padding: 12px;
       }
     }
 
     @media (max-width: 480px) {
+      h1 {
+        font-size: 1.3em;
+        margin: 15px 0;
+      }
+
       .tradingview-widget-container {
         height: 400px;
       }
 
-      h1 {
-        font-size: 1.4em;
-        margin: 15px 10px;
-      }
-
-      .container {
-        padding: 10px;
-      }
-
       .widget {
-        padding: 8px;
+        padding: 10px;
       }
     }
   </style>
